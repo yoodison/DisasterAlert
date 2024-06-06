@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.disaster-list {
+    margin-bottom: 20px;
+}
+
+.disaster-item {
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid gray;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.disaster-item.자연재해 {
+    border-color: blue;
+}
+
+.disaster-item.사회재난 {
+    border-color: orange;
+}
+
+.disaster-item p {
+    margin: 0;
+}
+
+.disaster-item a {
+    text-decoration: none;
+    color: #1a0dab;
+}
+
+.chat-container {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+.chat-input {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
