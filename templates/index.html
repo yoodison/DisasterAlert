@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Alert</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+    <h1>재난 경보 알리미</h1>
+    <div class="disaster-list">
+        {% for disaster in disasters %}
+        <div class="disaster-item {{ disaster.category }}">
+            <p>{{ disaster.description }}</p>
+            <span>{{ disaster.date }}</span>
+            <a href="https://news.google.com/search?q={{ disaster.search_query }}" target="_blank" rel="noopener noreferrer">뉴스 보기</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <input id="chat-input" class="chat-input" type="text" placeholder="메시지를 입력하세요...">
+        <button id="send-button">보내기</button>
+    </div>
+
+    <script>
+        const socket = io();
+
+        document.getElementById('send-button').onclick = () => {
+            const message = document.getElementById('chat-input').value;
+            socket.send(message);
+            document.getElementById('chat-input').value = '';
+        };
+
+        socket.on('message', (msg) => {
+            const chatBox = document.getElementById('chat-box');
+            const messageElement = document.createElement('div');
+            messageElement.textContent = msg;
+            chatBox.appendChild(messageElement);
+        });
+    </script>
+</body>
+</html>
